@@ -26,9 +26,13 @@ export function Header98() {
                     Csomagok megtekintése
                 </Button>
             </Link>
-            <Button title="Tudj meg többet" variant="secondary-alt">
-              Tudj meg többet
-            </Button>
+            <Link to="/package">
+                  <Button title="Tudj meg többet" variant="secondary-alt">
+                      Tudj meg többet
+                  </Button>
+            
+            </Link>
+
           </div>
         </div>
         <div className="absolute inset-0 z-0">

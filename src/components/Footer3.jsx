@@ -40,36 +40,36 @@ export function Footer3() {
           <div className="grid grid-cols-1 items-start gap-x-6 gap-y-10 md:grid-cols-2 md:gap-x-8 md:gap-y-4 text-4x1">
             <ul>
               <li className="py-2 font-semibold">
-                <a href="#">Utazási csomagok</a>
+                <a href="/package">Utazási csomagok</a>
               </li>
               <li className="py-2 font-semibold">
-                <a href="#">Blog</a>
+                <a href="/blog">Blog</a>
               </li>
               <li className="py-2 font-semibold">
-                <a href="#">Kapcsolat</a>
+                <a href="/contact">Kapcsolat</a>
               </li>
               <li className="py-2 font-semibold">
-                <a href="#">Rólam</a>
+                <a href="/contact">Rólam</a>
               </li>
               <li className="py-2 font-semibold">
-                <a href="#">GYIK</a>
+                <a href="/blog">GYIK</a>
               </li>
             </ul>
             <ul>
               <li className="py-2 font-semibold">
-                <a href="#">Közösség</a>
+                <a href="https://www.facebook.com">Közösség</a>
               </li>
               <li className="py-2 font-semibold">
-                <a href="#">Hírek</a>
+                <a href="/blog">Hírek</a>
               </li>
               <li className="py-2 font-semibold">
-                <a href="#">Inspiráció</a>
+                <a href="/package">Inspiráció</a>
               </li>
               <li className="py-2 font-semibold">
-                <a href="#">Tippek</a>
+                <a href="/blog">Tippek</a>
               </li>
               <li className="py-2 font-semibold">
-                <a href="#">Kalandok</a>
+                <a href="/blog">Kalandok</a>
               </li>
             </ul>
           </div>

@@ -19,7 +19,7 @@ export function Cta32() {
                 title="Feliratkozom"
                 variant="primary"
                 size="sm"
-                className="items-center justify-center px-6 py-3 text-black"
+                className="items-center justify-center px-6 py-3 text-white"
               >
                 Feliratkozom
               </Button>

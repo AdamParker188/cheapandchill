@@ -18,7 +18,6 @@ export default function Page() {
       <Header98 />
       <Product10 />
       <Layout239 />
-      <Layout503 />
       <Blog64 />
       <Cta32 />
       <Footer3 />

@@ -13,7 +13,6 @@ export default function Page() {
       <Blog30 />
       <Blog64 />
       <Cta32 />
-      <Comparison7 />
       <Footer3 />
     </div>
   );
