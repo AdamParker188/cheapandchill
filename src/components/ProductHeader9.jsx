@@ -1,11 +1,24 @@
 "use client";
 import { useParams, Link } from 'react-router-dom';
-import { travelPackages } from '../data/travelPackages'; 
+import { detailedTravelPackages } from '../data/detailedTravelPackages'; 
 import { Navbar6 } from './Navbar6';
 import { Footer3 } from './Footer3';
 import { Button } from "@relume_io/relume-ui";
 import { BiSolidStar, BiSolidStarHalf, BiStar, BiMap, BiCalendar, BiSolidPlane, BiCheck } from "react-icons/bi";
 import React from "react";
+import { parseISO, format } from "date-fns";
+import { hu } from "date-fns/locale";
+
+const formatRange = (startISO, endISO) => {
+  if (!startISO || !endISO) return null;
+  const s = parseISO(startISO);
+  const e = parseISO(endISO);
+  const sameMonth = s.getMonth() === e.getMonth();
+
+  if (sameMonth) return `${format(s, "LLLL d", { locale: hu })} – ${format(e, "d")}`;
+  return `${format(s, "LLLL d", { locale: hu })} – ${format(e, "LLLL d", { locale: hu })}`;
+};
+
 
 const Star = ({ rating }) => {
   const fullStars = Math.floor(rating);
@@ -19,9 +32,11 @@ const Star = ({ rating }) => {
   );
 };
 
+const formatFt = (n) => new Intl.NumberFormat("hu-HU").format(n) + " Ft";
+
 export function ProductHeader9() {
   const { id } = useParams();
-  const trip = travelPackages.find((t) => t.id === parseInt(id));
+  const trip = detailedTravelPackages.find((t) => String(t.id) === String(id));
 
   if (!trip) return <div><Navbar6 /><div className="text-center py-40">Nincs ilyen utazás!</div><Footer3 /></div>;
 
@@ -34,10 +49,16 @@ export function ProductHeader9() {
           
           {/* FEJLÉC */}
           <div className="mb-8">
-            <Link to="/packages" className="text-sm text-gray-500 hover:underline mb-4 block">← Vissza a csomagokhoz</Link>
+            <Link to="/csomagok" className="text-sm text-gray-500 hover:underline mb-4 block">← Vissza a csomagokhoz</Link>
             <h1 className="text-4xl md:text-6xl font-bold mb-4">{trip.title}</h1>
             <div className="flex flex-wrap gap-4 text-sm md:text-base text-gray-700">
-              {trip.dateLabel && <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full"><BiCalendar className="text-primary"/>{trip.dateLabel}</div>}
+              {(trip.startDate && trip.endDate) && (
+                <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full">
+                  <BiCalendar className="text-primary" />
+                  {formatRange(trip.startDate, trip.endDate)}
+                </div>
+              )}
+
               {trip.location && <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full"><BiMap className="text-primary"/>{trip.location}</div>}
               <div className="flex items-center gap-2 px-3 py-1"><Star rating={trip.rating} /> ({trip.rating})</div>
             </div>
@@ -117,7 +138,7 @@ export function ProductHeader9() {
             <div className="lg:sticky lg:top-24 h-fit">
               <div className="border shadow-lg rounded-xl p-6 bg-white border-t-4 border-t-primary">
                 <p className="text-gray-500 text-sm mb-1">Becsült útiköltség / fő</p>
-                <h3 className="text-4xl font-bold text-primary mb-6">{trip.price}</h3>
+                <h3 className="text-4xl font-bold text-primary mb-6">{formatFt(trip.price)}</h3>
                 
                 <div className="bg-gray-50 p-4 rounded-lg mb-6">
                   <h4 className="font-semibold mb-2">A szervezés menete:</h4>

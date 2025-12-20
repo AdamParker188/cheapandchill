@@ -40,7 +40,7 @@ export function Footer3() {
           <div className="grid grid-cols-1 items-start gap-x-6 gap-y-10 md:grid-cols-2 md:gap-x-8 md:gap-y-4 text-4x1">
             <ul>
               <li className="py-2 font-semibold">
-                <a href="/package">Utazási csomagok</a>
+                <a href="/csomagok">Utazási csomagok</a>
               </li>
               <li className="py-2 font-semibold">
                 <a href="/blog">Blog</a>
