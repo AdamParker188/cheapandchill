@@ -474,26 +474,26 @@ export function Navbar6() {
                 href="#"
                 className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
               >
-                Link One
+                Utazási csomagok
               </a>
               <a
                 href="#"
                 className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
               >
-                Link Two
+                Blog
               </a>
               <a
                 href="#"
                 className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
               >
-                Link Three
+                Kapcsolat
               </a>
               <div>
                 <button
                   className="relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base"
                   onClick={useActive.openOnMobileDropdownMenu}
                 >
-                  <span>Link Four</span>
+                  <span>Felfedezés</span>
                   <motion.span
                     animate={useActive.animateDropdownMenuIcon}
                     variants={{
@@ -811,14 +811,6 @@ export function Navbar6() {
                     </div>
                   </motion.nav>
                 </AnimatePresence>
-              </div>
-              <div className="mt-6 flex flex-col gap-4">
-                <Button title="Button" variant="secondary" size="sm">
-                  Button
-                </Button>
-                <Button title="Button" size="sm">
-                  Button
-                </Button>
               </div>
             </div>
           </motion.div>
