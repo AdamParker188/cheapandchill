@@ -126,7 +126,7 @@ export function Navbar6() {
             className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-8 pt-4"
           >
             <div className="flex flex-col">
-              <Link to="/package"
+              <Link to="/csomagok"
                 className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
               >
                 Utazási csomagok
