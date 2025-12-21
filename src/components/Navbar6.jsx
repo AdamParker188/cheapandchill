@@ -33,9 +33,9 @@ export function Navbar6() {
         {/* LOGÓ */}
         <a href="/" className="flex-shrink-0 flex items-center">
           <img
-            src="/Logo3.png"
+            src="/Logo4.png"
             alt="Utazási Iroda Logo"
-            className="h-16 w-auto md:h-20 lg:h-30 object-contain"
+            className="h-18 w-auto md:h-20 lg:h-30 object-contain"
           />
         </a>
 

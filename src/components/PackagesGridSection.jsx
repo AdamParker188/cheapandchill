@@ -29,6 +29,7 @@ export function PackagesGridSection() {
   // --- STATES ---
   const [maxPrice, setMaxPrice] = useState(null);
   const [selectedRegion, setSelectedRegion] = useState("Bárhova");
+  const [sortMode, setSortMode] = useState("recommended");
 
   // Date range: két mező
   const [startDate, setStartDate] = useState(null);
@@ -58,57 +59,61 @@ export function PackagesGridSection() {
   }, []);
 
   // --- FILTER ---
-  const filteredPackages = useMemo(() => {
-    const data = Array.isArray(detailedTravelPackages) ? detailedTravelPackages : [];
+const filteredPackages = useMemo(() => {
+  const result = detailedTravelPackages.filter((trip) => {
+    // --- ÁR ---
+    const tripPrice = Number(trip.price);
+    const matchesPrice =
+      maxPrice === null || !Number.isFinite(tripPrice)
+        ? true
+        : tripPrice <= maxPrice;
 
-    return data.filter((trip) => {
-      // 1) Ár (max)
-      const tripPrice = parsePriceToNumber(trip.price);
-      const matchesPrice =
-        maxPrice === null || !Number.isFinite(tripPrice) ? true : tripPrice <= maxPrice;
+    // --- RÉGIÓ ---
+    const matchesRegion =
+      selectedRegion === "Bárhova" || trip.location === selectedRegion;
 
-      // 2) Ország (location)
-      const matchesRegion =
-        selectedRegion === "Bárhova" || trip.location === selectedRegion;
+    // --- DÁTUM (átfedés) ---
+    let matchesDate = true;
 
-      // 3) Dátum: intelligens (1 dátum / 2 dátum eset)
-      let matchesDate = true;
+    if (startDate || endDate) {
+      const tripStart = parseISO(trip.startDate);
+      const tripEnd = parseISO(trip.endDate);
 
-      const tripStartRaw = parseISO(trip.startDate);
-      const tripEndRaw = parseISO(trip.endDate);
-
-      // Ha a csomagnál nincs normális dátum, ne zárjuk ki
-      const tripHasValidDates = isValid(tripStartRaw) && isValid(tripEndRaw);
-
-      if (tripHasValidDates) {
-        const tripStart = startOfDay(tripStartRaw);
-        const tripEnd = endOfDay(tripEndRaw);
-
-        if (startDate && !endDate) {
-          // csak kezdő: legyen átfedés a kezdő naptól
-          const selectedStart = startOfDay(startDate);
-          matchesDate = tripEnd >= selectedStart;
-        } else if (!startDate && endDate) {
-          // csak vég: legyen átfedés a vég napig
-          const selectedEnd = endOfDay(endDate);
-          matchesDate = tripStart <= selectedEnd;
-        } else if (startDate && endDate) {
-          // mindkettő: átfedés
-          const selectedStart = startOfDay(startDate);
-          const selectedEnd = endOfDay(endDate);
-          matchesDate = tripStart <= selectedEnd && tripEnd >= selectedStart;
-        } else {
-          // nincs kijelölve dátum
-          matchesDate = true;
+      if (isValid(tripStart) && isValid(tripEnd)) {
+        if (startDate && endDate) {
+          matchesDate = tripStart <= endDate && tripEnd >= startDate;
+        } else if (startDate) {
+          matchesDate = tripEnd >= startDate;
+        } else if (endDate) {
+          matchesDate = tripStart <= endDate;
         }
-      } else {
-        // hibás/hiányzó trip dátumnál: ne zárjuk ki
-        matchesDate = true;
       }
+    }
 
-      return matchesPrice && matchesRegion && matchesDate;
-    });
-  }, [maxPrice, selectedRegion, startDate, endDate]);
+    return matchesPrice && matchesRegion && matchesDate;
+  });
+
+  // -------- RENDEZÉS --------
+  const sorted = [...result].sort((a, b) => {
+    if (sortMode === "price_asc") {
+      return Number(a.price) - Number(b.price);
+    }
+
+    if (sortMode === "date_asc") {
+      const da = parseISO(a.startDate);
+      const db = parseISO(b.startDate);
+      if (!isValid(da)) return 1;
+      if (!isValid(db)) return -1;
+      return da - db;
+    }
+
+    // recommended → ne változtassuk
+    return 0;
+  });
+
+  return sorted;
+}, [maxPrice, selectedRegion, startDate, endDate, sortMode]);
+
 
   // --- UI HELPERS ---
   const inputClassName =
@@ -254,12 +259,28 @@ export function PackagesGridSection() {
               </div>
             </div>
           </div>
-        </div>
+              </div>
+              <div className="flex items-center justify-end gap-3">
+                  <label className="text-sm font-bold text-gray-700 uppercase">
+                      Rendezés:
+                  </label>
+
+                  <select
+                      value={sortMode}
+                      onChange={(e) => setSortMode(e.target.value)}
+                      className="p-2 border border-gray-300 rounded-md bg-white text-sm"
+                  >
+                      <option value="recommended">Ajánlott</option>
+                      <option value="price_asc">Ár szerint (növekvő)</option>
+                      <option value="date_asc">Dátum szerint (legkorábbi)</option>
+                  </select>
+              </div>
+
 
         {/* --- EREDMÉNYEK --- */}
         <div>
           {filteredPackages.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
               {filteredPackages.map((trip) => (
                 <TravelCardVertical key={trip.id} trip={trip} />
               ))}
