@@ -116,4 +116,32 @@ export const detailedTravelPackages = [
     location: "Csehország",
     rating: 4.4,
   },
+  {
+    id:9,
+    title:"Egy hét az örök tavasz szigetén Máltán",
+    image:"https://images.unsplash.com/photo-1522307617379-e982f8754d27?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price:18990,
+    description:"Szabadulj ki a télből és látogass el a gyönyörű Málta szigetére",
+    startDate:"2026-01-26",
+    endDate:"2026-02-02",
+    location:"Málta",
+    rating:3.8,
+    flightUrl:"https://www.skyscanner.hu/transport/repuloutak/bud/mlaa/260126/260202/config/10202-2601260830--31915-0-14151-2601261045%7C14151-2602020550--31915-0-10202-2602020805?adultsv2=1&cabinclass=economy&childrenv2=&ref=home&rtn=1&preferdirects=true&outboundaltsenabled=false&inboundaltsenabled=false",
+    hotels: {
+      recommended: {
+        name: "AX The Palace",
+        description: "Modern tengerparti szálloda reggelivel.",
+        image: "https://content.skyscnr.com/available/2203891826/2203891826_960x960.jpg",
+        url: "https://www.skyscanner.hu/szallodak/malta/sliema-szallodak/ax-the-palace/ht-128470856?checkin=2026-01-26&checkout=2026-02-02&rooms=1&adults=1&clicked_details_price=33931&correlation_id=5dde8547-9740-430c-a7e3-837b10da6c9c&currency=HUF&impression_id=229341e1-1524-4740-90fb-050ebe2c6d46&locale=hu-HU&market=HU&poiId=222602740&priceType=price-per-night&search_cycle_id=1fc08c08702093d616dbf566fb774684&search_entity_id=33350111&source=XSellMap",
+        priceLabel: "kb. 34 000 Ft / éj",
+      },
+      budget: {
+        name: "Mandera's Boutique Suites & Dorms",
+        description: "Egyszerű, tiszta hostel fiataloknak.",
+        image: "https://cf.bstatic.com/xdata/images/hotel/square240/486781544.webp?k=f27ad6d66313d199eec73ee6480c7479f315e60d03bf9f615fe5f2aff1e08e1f&o=",
+        url: "https://www.skyscanner.hu/szallodak/malta/valletta-szallodak/mandera-s-boutique-suites-%26-dorms/ht-216582836?checkin=2026-01-26&checkout=2026-02-02&rooms=1&adults=1&clicked_details_price=17840&correlation_id=ac20bd1b-1cb8-4d14-99ef-cf0044864061&currency=HUF&impression_id=229341e1-1524-4740-90fb-050ebe2c6d46&locale=hu-HU&market=HU&poiId=207591732&priceType=price-per-night&search_cycle_id=12ad0f449a1b08b730cb69c083af0d09&search_entity_id=33350111&source=XSellMap",
+        priceLabel: "kb. 17 000 Ft / éj",
+      },
+  },
+},
 ];

@@ -32,7 +32,7 @@ export function Footer3() {
               <a href="#">
                 <BiLogoInstagram className="size-10" />
               </a>
-             <a href="https://www.tiktok.com/@kesseiadam?_r=1&_d=secCgYIASAHKAESPgo8A1JZnUquwaBblKqwdmjjVmzSPcE7P%2F0ylDHuHP4FsoDdxIdlHPxt3HlzjyGV9z3Is%2FF2ryKlht4HTdsmGgA%3D&_svg=2&checksum=00915f420943e2f8187abc51a64cc3b7737bdb34b5de838fda70a3f1b9d7352e&item_author_type=1&sec_uid=MS4wLjABAAAAKmlR6DnWeX_JVmXiU35EV4LHWul3BZcABlcjgIUtU2ezJWyQU90XStWfpP2dG_b8&sec_user_id=MS4wLjABAAAAKmlR6DnWeX_JVmXiU35EV4LHWul3BZcABlcjgIUtU2ezJWyQU90XStWfpP2dG_b8&share_app_id=1233&share_author_id=6878668637919151110&share_link_id=CF6E4618-2156-43F3-8AE1-B784EE2749BE&share_region=HU&share_scene=1&sharer_language=hu&social_share_type=5&source=h5_m&timestamp=1766020149&tt_from=copy&u_code=dek81mhae70bba&ug_btm=b8727%2Cb0&user_id=6878668637919151110&utm_campaign=client_share&utm_medium=ios&utm_source=copy" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black">
+             <a href="" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black">
              <BiLogoTiktok className="size-10" />
              </a>
             </div>

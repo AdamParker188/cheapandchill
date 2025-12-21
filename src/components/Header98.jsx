@@ -17,16 +17,16 @@ export function Header98() {
               Csak egy fiatal srác vagyok, aki szereti az utazást és tudja, hogy
               a költségvetés szoros lehet. Ezért gyűjtöttem össze az aktuálisan legjobb,
               legolcsóbb csomagokat, hogy te is megláthasd a világot. Nincs
-              szükséged millióra, csak egy jó tervre és egy kis bátorságra.
+              szükséged milliókra, csak egy jó tervre és egy kis bátorságra.
             </p>
           </div>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4 md:mt-8">
-            <Link to="/package">
+            <Link to="/csomagok">
                 <Button title="Csomagok megtekintése" variant="primary">
                     Csomagok megtekintése
                 </Button>
             </Link>
-            <Link to="/package">
+            <Link to="/csomagok">
                   <Button title="Tudj meg többet" variant="secondary-alt">
                       Tudj meg többet
                   </Button>

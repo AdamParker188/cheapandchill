@@ -27,7 +27,7 @@ export function Contact14() {
               </h3>
               <p className="mb-2">Az egyszerűbb megoldás.</p>
               <a className="underline" href="#">
-                CheapAndChill@gmail.com
+                cheapandchillhu@gmail.com
               </a>
             </div>
             <div>

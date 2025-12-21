@@ -36,7 +36,7 @@ export function Contact6() {
             </div>
             <div className="flex items-center gap-4">
               <BiPhone className="size-6 flex-none" />
-              <p>+36 70 123 4567</p>
+              <p>+</p>
             </div>
             <div className="flex items-center gap-4">
               <BiMap className="size-6 flex-none" />

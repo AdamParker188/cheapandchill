@@ -64,14 +64,6 @@ export function Layout239() {
             </div>
           </div>
           <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
-            <Link to="/package">
-                <Button variant="secondary">Fedezz fel</Button>
-            </Link>
-            <Link to="/package">
-                <Button iconRight={<RxChevronRight />} variant="link" size="link">
-                  Tovább
-              </Button>
-            </Link>
           </div>
         </div>
       </div>
