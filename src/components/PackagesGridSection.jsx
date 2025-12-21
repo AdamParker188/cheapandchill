@@ -1,17 +1,11 @@
 // src/components/PackagesGridSection.jsx
-import React, { useMemo, useState } from "react";
-import { detailedTravelPackages } from "../data/detailedTravelPackages";
+import React, { useMemo, useState } from "react";   
 import { TravelCardVertical } from "./TravelCardVertical";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import {
-  parseISO,
-  isValid,
-  startOfDay,
-  endOfDay,
-} from "date-fns";
+import { parseISO, isValid, startOfDay, endOfDay } from "date-fns";
 
 const STEP = 1000;
 
@@ -20,33 +14,34 @@ const formatFt = (n) => new Intl.NumberFormat("hu-HU").format(n) + " Ft";
 // Biztos ár-parsoló: kezeli, ha stringben van (pl. "70 650 Ft" vagy "70650")
 const parsePriceToNumber = (value) => {
   if (typeof value === "number") return value;
-  if (typeof value !== "string") return NaN;
-  const digits = value.replace(/[^\d]/g, "");
-  return digits ? Number(digits) : NaN;
+  if (typeof value === "string") {
+    const digits = value.replace(/[^\d]/g, "");
+    return digits ? Number(digits) : NaN;
+  }
+  return NaN;
 };
 
-export function PackagesGridSection() {
+export function PackagesGridSection({packages=[]}) {
+  const source = packages;
   // --- STATES ---
   const [maxPrice, setMaxPrice] = useState(null);
   const [selectedRegion, setSelectedRegion] = useState("Bárhova");
   const [sortMode, setSortMode] = useState("recommended");
 
-  // Date range: két mező
+  // Date range (2 mező)
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
   // --- RÉGIÓK / ORSZÁGOK LISTÁJA (location alapján) ---
   const regions = useMemo(() => {
-    const values = (Array.isArray(detailedTravelPackages) ? detailedTravelPackages : [])
-      .map((trip) => trip.location)
-      .filter(Boolean);
-
+    const data = Array.isArray(source) ? source : [];
+    const values = data.map((t) => t.location).filter(Boolean);
     return ["Bárhova", ...new Set(values)];
   }, []);
 
   // --- SLIDER HATÁROK ---
   const { minPossible, maxPossible } = useMemo(() => {
-    const data = Array.isArray(detailedTravelPackages) ? detailedTravelPackages : [];
+    const data = Array.isArray(source) ? source : [];
     const prices = data
       .map((p) => parsePriceToNumber(p.price))
       .filter((v) => Number.isFinite(v));
@@ -58,62 +53,72 @@ export function PackagesGridSection() {
     return { minPossible: min, maxPossible: max };
   }, []);
 
-  // --- FILTER ---
-const filteredPackages = useMemo(() => {
-  const result = detailedTravelPackages.filter((trip) => {
-    // --- ÁR ---
-    const tripPrice = Number(trip.price);
-    const matchesPrice =
-      maxPrice === null || !Number.isFinite(tripPrice)
-        ? true
-        : tripPrice <= maxPrice;
+  // --- FILTER + SORT ---
+  const filteredPackages = useMemo(() => {
+    const data = Array.isArray(source) ? source : [];
 
-    // --- RÉGIÓ ---
-    const matchesRegion =
-      selectedRegion === "Bárhova" || trip.location === selectedRegion;
+    // 1) FILTER
+    const result = data.filter((trip) => {
+      // --- ÁR ---
+      const tripPrice = parsePriceToNumber(trip.price);
+      const matchesPrice =
+        maxPrice === null || !Number.isFinite(tripPrice) ? true : tripPrice <= maxPrice;
 
-    // --- DÁTUM (átfedés) ---
-    let matchesDate = true;
+      // --- ORSZÁG ---
+      const matchesRegion =
+        selectedRegion === "Bárhova" || trip.location === selectedRegion;
 
-    if (startDate || endDate) {
-      const tripStart = parseISO(trip.startDate);
-      const tripEnd = parseISO(trip.endDate);
+      // --- DÁTUM (átfedés, és 1 dátumos esetet is kezel) ---
+      let matchesDate = true;
 
-      if (isValid(tripStart) && isValid(tripEnd)) {
-        if (startDate && endDate) {
-          matchesDate = tripStart <= endDate && tripEnd >= startDate;
-        } else if (startDate) {
-          matchesDate = tripEnd >= startDate;
-        } else if (endDate) {
-          matchesDate = tripStart <= endDate;
+      if (startDate || endDate) {
+        const tripStartRaw = parseISO(trip.startDate);
+        const tripEndRaw = parseISO(trip.endDate);
+
+        if (isValid(tripStartRaw) && isValid(tripEndRaw)) {
+          const tripStart = startOfDay(tripStartRaw);
+          const tripEnd = endOfDay(tripEndRaw);
+
+          if (startDate && endDate) {
+            const s = startOfDay(startDate);
+            const e = endOfDay(endDate);
+            matchesDate = tripStart <= e && tripEnd >= s; // átfedés
+          } else if (startDate) {
+            const s = startOfDay(startDate);
+            matchesDate = tripEnd >= s; // fut még ettől a naptól
+          } else if (endDate) {
+            const e = endOfDay(endDate);
+            matchesDate = tripStart <= e; // elkezdődik eddig
+          }
+        } else {
+          // hibás dátum esetén ne zárjuk ki
+          matchesDate = true;
         }
       }
-    }
 
-    return matchesPrice && matchesRegion && matchesDate;
-  });
+      return matchesPrice && matchesRegion && matchesDate;
+    });
 
-  // -------- RENDEZÉS --------
-  const sorted = [...result].sort((a, b) => {
-    if (sortMode === "price_asc") {
-      return Number(a.price) - Number(b.price);
-    }
+    // 2) SORT
+    const getPrice = (t) => {
+      const p = parsePriceToNumber(t.price);
+      return Number.isFinite(p) ? p : Number.POSITIVE_INFINITY;
+    };
 
-    if (sortMode === "date_asc") {
-      const da = parseISO(a.startDate);
-      const db = parseISO(b.startDate);
-      if (!isValid(da)) return 1;
-      if (!isValid(db)) return -1;
-      return da - db;
-    }
+    const getStart = (t) => {
+      const d = parseISO(t.startDate);
+      return isValid(d) ? d.getTime() : Number.POSITIVE_INFINITY;
+    };
 
-    // recommended → ne változtassuk
-    return 0;
-  });
+    const sorted = [...result].sort((a, b) => {
+      if (sortMode === "price_asc") return getPrice(a) - getPrice(b);
+      if (sortMode === "date_asc") return getStart(a) - getStart(b);
+      // recommended: maradjon az eredeti sorrend -> nem rendezünk
+      return 0;
+    });
 
-  return sorted;
-}, [maxPrice, selectedRegion, startDate, endDate, sortMode]);
-
+    return sorted;
+  }, [maxPrice, selectedRegion, startDate, endDate, sortMode]);
 
   // --- UI HELPERS ---
   const inputClassName =
@@ -128,8 +133,8 @@ const filteredPackages = useMemo(() => {
   return (
     <section className="bg-white py-12">
       <div className="container mx-auto px-4 lg:px-8">
-        {/* --- FELSŐ KERESŐSÁV --- */}
-        <div className="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200 mb-12">
+        {/* --- FELSŐ KERESŐSÁV + RENDEZÉS EGY DOBOZBAN --- */}
+        <div className="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* 1) DÁTUM (2 mező) */}
             <div>
@@ -259,8 +264,8 @@ const filteredPackages = useMemo(() => {
               </div>
             </div>
           </div>
-              </div>
-              <div className="flex items-center justify-end gap-3">
+        </div>
+              <div className="mt-6 mb-6 flex items-center justify-end gap-3">
                   <label className="text-sm font-bold text-gray-700 uppercase">
                       Rendezés:
                   </label>
@@ -268,7 +273,8 @@ const filteredPackages = useMemo(() => {
                   <select
                       value={sortMode}
                       onChange={(e) => setSortMode(e.target.value)}
-                      className="p-2 border border-gray-300 rounded-md bg-white text-sm"
+                      className="p-3 border border-gray-300 rounded-md bg-white text-sm text-gray-700
+               focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                       <option value="recommended">Ajánlott</option>
                       <option value="price_asc">Ár szerint (növekvő)</option>
@@ -280,7 +286,7 @@ const filteredPackages = useMemo(() => {
         {/* --- EREDMÉNYEK --- */}
         <div>
           {filteredPackages.length > 0 ? (
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
               {filteredPackages.map((trip) => (
                 <TravelCardVertical key={trip.id} trip={trip} />
               ))}
