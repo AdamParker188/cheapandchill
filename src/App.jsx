@@ -40,6 +40,8 @@ export default function App() {
         {/* Ez a RÉSZLETES adatlap egyetlen csomagról */}
         {/* A kettőspont (/:id) azt jelenti, hogy itt egy változó lesz, pl. /csomag/1 */}
         <Route path="/csomag/:id" element={<ProductHeader9 />} />
+        <Route path="/csomag/:id" element={<PackageDetailsPage />} />
+
 
       </Routes>
     </div>
