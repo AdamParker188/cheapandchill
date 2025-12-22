@@ -67,6 +67,7 @@ export async function loadPackagesFromSheet() {
       description: row.description?.trim() || "",
       startDate: row.startDate?.trim() || "",
       endDate: row.endDate?.trim() || "",
+      createdAt: row.createdAt?.trim() || "",
       location: row.location?.trim() || "",
       rating: toNumber(row.rating),
       flightUrl: row.flightUrl?.trim() || "",

@@ -43,26 +43,6 @@ const formatRange = (startISO, endISO) => {
   })}`;
 };
 
-const Star = ({ rating = 0 }) => {
-  const fullStars = Math.floor(rating);
-  const hasHalfStar = rating % 1 !== 0;
-
-  return (
-    <div className="flex items-center gap-1 text-yellow-500">
-      {[...Array(5)].map((_, i) => (
-        <div key={i}>
-          {i < fullStars ? (
-            <BiSolidStar />
-          ) : hasHalfStar && i === fullStars ? (
-            <BiSolidStarHalf />
-          ) : (
-            <BiStar />
-          )}
-        </div>
-      ))}
-    </div>
-  );
-};
 
 const formatFt = (value) => {
   // támogatja: 70650, "70650", "70 650 Ft"
@@ -117,22 +97,26 @@ export function ProductHeader9({ trip }) {
                 </div>
               )}
 
-              <div className="flex items-center gap-2 px-3 py-1">
-                <Star rating={trip.rating || 0} /> ({trip.rating || 0})
-              </div>
             </div>
           </div>
 
           {/* FŐ KÉP */}
           {trip.image && (
-            <div className="mb-10 rounded-2xl overflow-hidden shadow-xl aspect-video md:aspect-[21/9]">
+            <div className="relative mb-10 rounded-2xl overflow-hidden shadow-xl aspect-video md:aspect-[21/9]">
               <img
                 src={trip.image}
                 alt={trip.title}
                 className="w-full h-full object-cover"
               />
+
+              {/* FELTÖLTÉS DÁTUMA */}
+              <div className="absolute top-4 right-4 bg-black/60 text-white px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-md">
+                Feltöltve: {trip.createdAt}
+              </div>
             </div>
+
           )}
+
 
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10 lg:gap-16">
             {/* --- BAL OSZLOP: LEÍRÁS + SZÁLLÁSOK --- */}
@@ -157,7 +141,7 @@ export function ProductHeader9({ trip }) {
                             🌟 Ajánlott Opció
                           </span>
                           {trip.hotels.recommended.priceLabel && (
-                            <span className="text-sm text-blue-600 font-semibold">
+                            <span className="text-base text-blue-600 font-semibold">
                               {trip.hotels.recommended.priceLabel}
                             </span>
                           )}
@@ -190,7 +174,7 @@ export function ProductHeader9({ trip }) {
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                <Button className="w-full">Megnézem a Booking-on</Button>
+                                <Button className="w-full">Megnézem</Button>
                               </a>
                             )}
                           </div>
@@ -206,7 +190,7 @@ export function ProductHeader9({ trip }) {
                             💰 Pénztárcabarát Opció
                           </span>
                           {trip.hotels.budget.priceLabel && (
-                            <span className="text-sm text-green-600 font-semibold">
+                            <span className="text-base text-green-600 font-semibold">
                               {trip.hotels.budget.priceLabel}
                             </span>
                           )}
@@ -243,7 +227,7 @@ export function ProductHeader9({ trip }) {
                                   variant="secondary"
                                   className="w-full border-green-200 text-green-700 hover:bg-green-50"
                                 >
-                                  Megnézem a Booking-on
+                                  Megnézem
                                 </Button>
                               </a>
                             )}
