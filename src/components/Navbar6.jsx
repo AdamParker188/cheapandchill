@@ -35,7 +35,7 @@ export function Navbar6() {
           <img
             src="/Logo4.png"
             alt="Utazási Iroda Logo"
-            className="h-18 w-auto md:h-20 lg:h-30 object-contain"
+            className="h-20 w-auto md:h-20 lg:h-30 object-contain"
           />
         </a>
 
