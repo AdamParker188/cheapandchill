@@ -32,7 +32,7 @@ export function TravelCardVertical({ trip }) {
   return (
     <div className="flex flex-col h-full group">
       {/* KÉP LINK - Kerekített sarkok, hover effekt */}
-      <Link to={`/csomag/${trip.id}`} className="block overflow-hidden rounded-lg aspect-[4/3] mb-4">
+      <Link to={`/csomag/${trip.id}`}state={{trip}} className="block overflow-hidden rounded-lg aspect-[4/3] mb-4">
         <img
             src={trip.image}
             alt={trip.title}
@@ -43,7 +43,7 @@ export function TravelCardVertical({ trip }) {
       {/* TARTALOM - Középre igazítva */}
       <div className="text-center flex-grow flex flex-col px-2">
         {/* Cím */}
-              <Link to={`/csomag/${trip.id}`} className="block">
+              <Link to={`/csomag/${trip.id}`}state={{trip}} className="block">
                   <h3 className="text-lg font-medium text-gray-800 leading-tight mb-1 hover:text-blue-600 transition-colors">
                       {trip.title}
                   </h3>

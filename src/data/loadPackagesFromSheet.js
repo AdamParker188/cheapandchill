@@ -1,4 +1,5 @@
 import Papa from "papaparse";
+import { SHEET_CSV_URL } from "../config/sheet";
 
 const toNumber = (v) => {
   if (v === null || v === undefined || v === "") return null;
@@ -6,8 +7,8 @@ const toNumber = (v) => {
   return Number.isFinite(n) ? n : null;
 };
 
-export async function loadPackagesFromSheet(sheetCsvUrl) {
-  const res = await fetch(sheetCsvUrl);
+export async function loadPackagesFromSheet() {
+  const res = await fetch(SHEET_CSV_URL);
   if (!res.ok) throw new Error("Nem sikerült betölteni a Google Sheet CSV-t.");
 
   const csvText = await res.text();
@@ -69,6 +70,7 @@ export async function loadPackagesFromSheet(sheetCsvUrl) {
       location: row.location?.trim() || "",
       rating: toNumber(row.rating),
       flightUrl: row.flightUrl?.trim() || "",
+      hotels: buildHotels(row),
     }))
     .filter((p) => p.id && p.title); // alap szűrés
 }
