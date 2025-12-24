@@ -21,7 +21,7 @@ export function Footer3() {
                 <img
                   src="/Logo4.png"
                   alt="Logo image"
-                  className="h-48 w-auto object-contain"
+                  className="h-24 w-auto object-contain"
                 />
               </a>
             </div>
@@ -43,16 +43,13 @@ export function Footer3() {
                 <a href="/csomagok">Utazási csomagok</a>
               </li>
               <li className="py-2 font-semibold">
-                <a href="/blog">Blog</a>
-              </li>
-              <li className="py-2 font-semibold">
                 <a href="/contact">Kapcsolat</a>
               </li>
               <li className="py-2 font-semibold">
                 <a href="/contact">Rólam</a>
               </li>
               <li className="py-2 font-semibold">
-                <a href="/blog">GYIK</a>
+                <a href="/contact">GYIK</a>
               </li>
             </ul>
             <ul>
@@ -60,16 +57,10 @@ export function Footer3() {
                 <a href="https://www.facebook.com">Közösség</a>
               </li>
               <li className="py-2 font-semibold">
-                <a href="/blog">Hírek</a>
+                <a href="https://www.facebook.com">Hírek</a>
               </li>
               <li className="py-2 font-semibold">
-                <a href="/package">Inspiráció</a>
-              </li>
-              <li className="py-2 font-semibold">
-                <a href="/blog">Tippek</a>
-              </li>
-              <li className="py-2 font-semibold">
-                <a href="/blog">Kalandok</a>
+                <a href="/csomagok">Inspiráció</a>
               </li>
             </ul>
           </div>
