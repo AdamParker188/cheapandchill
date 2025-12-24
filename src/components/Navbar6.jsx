@@ -126,11 +126,6 @@ export function Navbar6() {
               >
                 Utazási csomagok
               </Link>
-              <Link to="/blog"
-                className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
-              >
-                Blog
-              </Link>
               <Link to="/contact"
                 className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
               >

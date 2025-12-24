@@ -21,7 +21,7 @@ export function Footer3() {
                 <img
                   src="/Logo4.png"
                   alt="Logo image"
-                  className="h-24 w-auto object-contain"
+                  className="h-28 w-auto object-contain"
                 />
               </a>
             </div>
