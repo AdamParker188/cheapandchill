@@ -25,7 +25,7 @@ export function Footer3() {
                 />
               </a>
             </div>
-            <div className="grid grid-flow-col grid-cols-[max-content] items-start justify-start gap-x-3">
+            <div className="grid grid-flow-col grid-cols-[max-content] items-start justify-start gap-x-10">
               <a href="#">
                 <BiLogoFacebookCircle className="size-10" />
               </a>

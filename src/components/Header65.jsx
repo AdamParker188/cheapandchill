@@ -22,9 +22,6 @@ export function Header65() {
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-4 md:mt-8">
           <Button title="Csomagok">Csomagok</Button>
-          <Button title="Blog" variant="secondary-alt">
-            Blog
-          </Button>
         </div>
       </div>
       <div className="absolute inset-0 z-0">
