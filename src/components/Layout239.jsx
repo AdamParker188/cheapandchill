@@ -60,7 +60,7 @@ export function Layout239() {
               <h3 className="mb-5 text-2xl font-bold md:mb-6 md:text-3xl md:leading-[1.3] lg:text-4xl">
                 Egy teljes csomag
               </h3>
-              <p>Repülőjegy oda-vissza,szállás és egy ajánlott útiterv</p>
+              <p>Repülőjegy oda-vissza, szállás és pár tipp, hogy gördülékeny legyen az utazás</p>
             </div>
           </div>
           <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">

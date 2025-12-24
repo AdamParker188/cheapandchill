@@ -51,8 +51,6 @@ export default function Page() {
       )}
 
       <Layout239 />
-      <Blog64 />
-      <Cta32 />
       <Footer3 />
     </div>
   );

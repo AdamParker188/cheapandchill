@@ -39,9 +39,8 @@ export function Faq5() {
               Hol alszom majd?
             </AccordionTrigger>
             <AccordionContent className="md:pb-6">
-              Hostelekben és egyszerű szálláshelyeken szállsz, ahol más
-              fiatalokkal találkozhatsz. Minden hely biztonságos és tiszta, az
-              ár pedig már benne van a csomagban.
+              Gyakorlatilag két gondosan kiválasztott szálláslehetőséget ajánlok a számos elérhető opció közül. 
+              Az egyik egy magasabb színvonalú, jellemzően hotelszobai elhelyezés, míg a másik inkább a költséghatékonyságot szem előtt tartó, hostel jellegű szállás.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
@@ -54,12 +53,10 @@ export function Faq5() {
               }
               className="md:py-5 md:text-md [&[data-state=open]>svg]:rotate-45"
             >
-              Hogyan fizethetek?
+              Hogyan történik a foglalás és a fizetés?
             </AccordionTrigger>
             <AccordionContent className="md:pb-6">
-              Bankkártyával vagy online átutalással tudsz fizetni. Az első
-              részletet a foglaláskor kell befizetni, a többit pedig később,
-              amikor már közel van az utazás napja.
+              A weboldalon található szállás- és repülőjegy-linkek egy összesítő oldalra, a Skyscannerre vezetnek, ahol egyszerűen és gyorsan meg tudod nézni az elérhető lehetőségeket, összehasonlíthatod az árakat, majd közvetlenül lefoglalhatod az utazáshoz szükséges szállást és repülőjegyet.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
@@ -72,12 +69,10 @@ export function Faq5() {
               }
               className="md:py-5 md:text-md [&[data-state=open]>svg]:rotate-45"
             >
-              Mit tegyek ha lemondok?
+              Megbízható ez?
             </AccordionTrigger>
             <AccordionContent className="md:pb-6">
-              Harminc nappal az indulás előtt ingyenesen lemondhatod az utazást.
-              Később lemondás esetén a befizetett összeg egy részét visszakapod,
-              attól függően, hogy mennyire van közel az indulás.
+              A Skyscanner a világ egyik legnépszerűbb utazásfoglaló oldala, amely teljesen biztonságos. Én nem kérek és nem kezelek semmilyen személyes adatot: a foglalás minden lépését közvetlenül a Skyscanner felületén végzed el. Az én feladatom csupán az, hogy megmutassam, mikor és hol a legésszerűbb lefoglalni az utazást.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
@@ -93,9 +88,7 @@ export function Faq5() {
               Mik a csomag részei?
             </AccordionTrigger>
             <AccordionContent className="md:pb-6">
-              Szállás, helyi közlekedés és néhány étkezés benne van. A
-              repülőjegy külön, de segítünk az olcsó járatok megtalálásában, és
-              az útmutatóban minden információ megvan.
+              A weboldalamon található csomagban a két fő komponense van az utazásodnak , azaz a repülőjegy és a szállás.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
@@ -111,22 +104,32 @@ export function Faq5() {
               Egyedül utazhatok?
             </AccordionTrigger>
             <AccordionContent className="md:pb-6">
-              Persze, sokan utaznak egyedül. A csoportban azonnal barátokra
-              találsz, és az első nap közös programunk van, hogy
-              megismerkedjetek egymással.
+              Persze, sokan utaznak egyedül.Azonban a szállások nagyrésze 2 főre vannak kalkulálva, tehát az egyedüli utazások bizonyos esetekben megdobhatják a költségeket.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem
+            value="item-4"
+            className="border border-border-primary px-5 md:px-6"
+          >
+            <AccordionTrigger
+              icon={
+                <RxPlus className="size-7 shrink-0 text-text-primary transition-transform duration-300 md:size-8" />
+              }
+              className="md:py-5 md:text-md [&[data-state=open]>svg]:rotate-45"
+            >
+              Miért nem azt az árat látom már a foglalásnál amit a weboldalon látok?
+            </AccordionTrigger>
+            <AccordionContent className="md:pb-6">
+              A repülőjegyek árazása egy rendkívűl ingadozó, dinamikus dolog. Minden csomagnál feltüntetem a feltöltés dátumát, minél korábban észreveszed annál nagyobb a valószínűsége,hogy még azonos árral letudod foglalni az utat.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+        
         <div className="mt-12 md:mt-18 lg:mt-20">
           <h4 className="mb-3 text-2xl font-bold md:mb-4 md:text-3xl md:leading-[1.3] lg:text-4xl">
             Még több kérdésed van?
           </h4>
           <p className="md:text-md">Írj nekünk, szívesen válaszolunk.</p>
-          <div className="mt-6 md:mt-8">
-            <Button title="Kapcsolat" variant="secondary">
-              Kapcsolat
-            </Button>
-          </div>
         </div>
       </div>
     </section>

@@ -261,7 +261,7 @@ export function ProductHeader9({ trip }) {
                     </li>
                     <li className="flex gap-2">
                       <BiCheck className="text-green-500 text-lg" />
-                      3. Találkozunk a reptéren!
+                      3. Pakolj össze és érezd jól magad
                     </li>
                   </ul>
                 </div>

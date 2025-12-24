@@ -48,11 +48,6 @@ export function Navbar6() {
             >
               Utazási csomagok
             </Link>
-            <Link to="/blog"
-              className="relative block w-auto py-3 text-lg lg:inline-block lg:px-4 lg:py-6 lg:text-2xl"
-            >
-              Blog
-            </Link>
             <Link to="/contact"
               className="relative block w-auto py-3 text-lg lg:inline-block lg:px-4 lg:py-6 lg:text-2xl"
             >
