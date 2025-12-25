@@ -19,7 +19,7 @@ export function Footer3() {
             <div className="mb-6 md:mb-8">
               <a href="#">
                 <img
-                  src="/Logo4.png"
+                  src="/Logo4.svg"
                   alt="Logo image"
                   className="h-32 w-auto object-contain"
                 />
