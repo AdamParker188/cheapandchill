@@ -21,7 +21,7 @@ export function Footer3() {
                 <img
                   src="/Logo4.svg"
                   alt="Logo image"
-                  className="h-32 w-auto object-contain"
+                  className="h-36 w-auto object-contain"
                 />
               </a>
             </div>
