@@ -106,7 +106,7 @@ export function ProductHeader9({ trip }) {
               <img
                 src={trip.image}
                 alt={trip.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-center"
               />
 
               {/* FELTÖLTÉS DÁTUMA */}

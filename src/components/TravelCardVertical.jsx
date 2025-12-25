@@ -36,7 +36,7 @@ export function TravelCardVertical({ trip }) {
         <img
             src={trip.image}
             alt={trip.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-full object-center transition-transform duration-500 group-hover:scale-110"
         />
       </Link>
 
