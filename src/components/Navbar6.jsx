@@ -33,7 +33,7 @@ export function Navbar6() {
         {/* LOGÓ */}
         <a href="/" className="flex-shrink-0 flex items-center">
           <img
-            src="/Logo4.png"
+            src="/Logo4.svg"
             alt="Utazási Iroda Logo"
             className="h-20 w-auto md:h-20 lg:h-30 object-contain"
           />

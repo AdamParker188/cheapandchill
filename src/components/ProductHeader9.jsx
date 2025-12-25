@@ -102,11 +102,11 @@ export function ProductHeader9({ trip }) {
 
           {/* FŐ KÉP */}
           {trip.image && (
-            <div className="relative mb-10 rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative mb-10 rounded-2xl overflow-hidden shadow-xl aspect-[16/9]">
               <img
                 src={trip.image}
                 alt={trip.title}
-                className="w-full max-h-[70vh] object-contain mx-auto"
+                className="w-full h-full object-cover object-[50%_45%]"
               />
 
               {/* FELTÖLTÉS DÁTUMA */}
@@ -285,6 +285,7 @@ export function ProductHeader9({ trip }) {
 
                 <p className="text-center text-xs text-gray-400 mt-4">
                   A gombra kattintva a légitársaság oldalára jutsz.
+                  A feltüntetett ár a feltöltés dátumában érvényes.
                 </p>
               </div>
             </div>
