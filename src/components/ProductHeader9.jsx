@@ -102,11 +102,11 @@ export function ProductHeader9({ trip }) {
 
           {/* FŐ KÉP */}
           {trip.image && (
-            <div className="relative mb-10 rounded-2xl overflow-hidden shadow-xl aspect-video md:aspect-[21/9]">
+            <div className="relative mb-10 rounded-2xl overflow-hidden shadow-xl">
               <img
                 src={trip.image}
                 alt={trip.title}
-                className="w-full h-full object-center"
+                className="w-full max-h-[70vh] object-contain mx-auto"
               />
 
               {/* FELTÖLTÉS DÁTUMA */}
