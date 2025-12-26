@@ -29,10 +29,10 @@ export function Footer3() {
               <a href="#">
                 <BiLogoFacebookCircle className="size-10" />
               </a>
-              <a href="#">
+              <a href="https://www.instagram.com/cheapandchillhu/">
                 <BiLogoInstagram className="size-10" />
               </a>
-             <a href="" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black">
+             <a href="https://www.tiktok.com/@cheapandchill?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black">
              <BiLogoTiktok className="size-10" />
              </a>
             </div>
