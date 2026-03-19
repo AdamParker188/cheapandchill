@@ -27,7 +27,7 @@ export function Navbar6() {
     <section
       id="relume"
       // EZ AZ EGYETLEN CSÍK MARAD (border-b):
-      className="relative z-[999] flex min-h-16 w-full items-center border-b border-border-primary bg-background-primary px-4 md:px-[5%] md:min-h-18"
+      className="relative z-[999] flex min-h-16 w-full items-center border-b border-border-primary bg-white px-4 md:px-[5%] md:min-h-18"
     >
       <div className="mx-auto flex size-full max-w-full items-center justify-between">
         {/* LOGÓ */}
@@ -41,7 +41,7 @@ export function Navbar6() {
 
         {/* ASZTALI MENÜ (Desktop) */}
         {/* JAVÍTÁS: Innen kivettem a 'border-b border-border-primary' részt, hogy ne legyen dupla csík */}
-        <div className="absolute hidden h-screen overflow-auto bg-background-primary px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-start   lg:border-none lg:bg-none lg:px-0 lg:pt-0">
+        <div className="absolute hidden h-screen overflow-auto bg-white px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-start   lg:border-none lg:bg-none lg:px-0 lg:pt-0">
           <div className="flex flex-col items-center lg:flex-row gap-x-4">
             <Link to="/csomagok"
               className="relative block w-auto py-3 text-lg lg:inline-block lg:px-4 lg:py-6 lg:text-2xl"
@@ -118,7 +118,7 @@ export function Navbar6() {
             exit="close"
             transition={{ duration: 0.4 }}
             // A mobil menü alján marad a csík, ez így helyes:
-            className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-8 pt-4"
+            className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-border-primary bg-white px-[5%] pb-8 pt-4"
           >
             <div className="flex flex-col">
               <Link to="/csomagok"

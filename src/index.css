@@ -50,9 +50,15 @@ input[type="range"]::-moz-range-thumb:hover {
   color: white !important;
   border-radius: 8px;
 }
-html { font-size: 14px; }
 
-html, body {
-  background: #fff;
+html {
+  font-size: 14px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
 }
 
