@@ -37,7 +37,7 @@ export function PackagesGridSection({packages=[]}) {
     const data = Array.isArray(source) ? source : [];
     const values = data.map((t) => t.location).filter(Boolean);
     return ["Bárhova", ...new Set(values)];
-  }, []);
+  }, [source]);
 
   // --- SLIDER HATÁROK ---
   const { minPossible, maxPossible } = useMemo(() => {
@@ -51,7 +51,7 @@ export function PackagesGridSection({packages=[]}) {
     const min = Math.floor(Math.min(...prices) / STEP) * STEP;
     const max = Math.ceil(Math.max(...prices) / STEP) * STEP;
     return { minPossible: min, maxPossible: max };
-  }, []);
+  }, [source]);
 
   // --- FILTER + SORT ---
   const filteredPackages = useMemo(() => {

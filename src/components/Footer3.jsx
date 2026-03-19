@@ -26,7 +26,7 @@ export function Footer3() {
               </a>
             </div>
             <div className="grid grid-flow-col grid-cols-[max-content] items-start justify-start gap-x-10">
-              <a href="#">
+              <a href="">
                 <BiLogoFacebookCircle className="size-10" />
               </a>
               <a href="https://www.instagram.com/cheapandchillhu/">
@@ -67,7 +67,7 @@ export function Footer3() {
         </div>
         <div className="h-px w-full bg-black" />
         <div className="flex flex-col-reverse items-start justify-between pb-4 pt-6 md:flex-row md:items-center md:pb-0 md:pt-8">
-          <p className="mt-8 md:mt-0">© 2024 Relume. All rights reserved.</p>
+          <p className="mt-8 md:mt-0">© 2025 Cheapandchill. All rights reserved.</p>
           <ul className="grid grid-flow-row grid-cols-[max-content] justify-center gap-y-4 md:grid-flow-col md:gap-x-6 md:gap-y-0">
             <li className="underline">
               <a href="#">Adatvédelmi szabályzat</a>

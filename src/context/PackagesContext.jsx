@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { loadPackagesFromSheet } from "../data/loadPackagesFromSheet";
-import { SHEET_CSV_URL } from "../config/sheet";
 
 const PackagesContext = createContext(null);
 
@@ -17,7 +16,7 @@ export function PackagesProvider({ children }) {
         setLoading(true);
         setError(null);
 
-        const data = await loadPackagesFromSheet(SHEET_CSV_URL);
+        const data = await loadPackagesFromSheet();
 
         if (mounted) {
           setPackages(Array.isArray(data) ? data : []);
